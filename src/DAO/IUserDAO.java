@@ -24,7 +24,7 @@ public interface IUserDAO {
 
     public int setAlias(JpushAliasEntity jpushAliasEntity);
 
-    public List<String[]> getCritical(String phoneNumber);
+    public List<MedicalRecordEntity> getCritical(String phoneNumber);
 
     public int getRealName(UserEntity userEntity);
 
@@ -59,6 +59,8 @@ public interface IUserDAO {
 
     public int getHeartRate(String phoneNumber);
     public int updateHeartRate(String phoneNumber, String heartRate);
+
+    public double[] userGetLocation(String phoneNumber);
 
    // public boolean create(Object Entity);
 

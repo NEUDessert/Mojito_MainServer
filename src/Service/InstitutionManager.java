@@ -69,6 +69,8 @@ public class InstitutionManager implements IInstitutionManager {
 
     }
     public int addDevice(DeviceEntity deviceEntity, HttpServletRequest request){
+        System.out.println(deviceEntity.getDeviceId());
+       // int devideId = (Integer)request.getAttribute("deviceId");
         Integer institutionId = Integer.parseInt((String)(request.getSession(true).getAttribute("institutionId")));
         deviceEntity.setInstitutionId(institutionId);
         return userDAO.addDevice(deviceEntity);

@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Mojito">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mojito</output-path>
+    <root id="archive" name="Mojito.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Mojito" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Mojito/web/Web" />
+      <element id="artifact" artifact-name="Mojito:war exploded" />
+    </root>
+  </artifact>
+</component>

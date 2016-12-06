@@ -67,8 +67,8 @@ public class Test {
 
     }
 
-    public static void main(String[] args) throws JsonProcessingException{
+    public static void main(String[] args) throws JsonProcessingException, IOException{
       //  new Test().test();
-        new Test().getJson();
+//        new Test().getJson();
     }
 }

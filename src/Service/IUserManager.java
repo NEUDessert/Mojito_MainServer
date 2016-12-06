@@ -29,6 +29,7 @@ public interface IUserManager {
     public int setAlias(HttpServletRequest request, JpushAliasEntity jpushAliasEntity);
 
     public int sendCritical(HttpServletRequest request, String location) throws ParseException;
+    public int sendCritical(AlertEntity alertEntity) throws ParseException;
 
     public int getRealName(UserEntity userEntity);
 
@@ -44,5 +45,8 @@ public interface IUserManager {
 
     public int updateHeartRate(HttpServletRequest request, String heartRate);
 
+    public double[] userGetLocation(String phoneNumber);
+
+    public void addAlert(AlertEntity alertEntity);
 
 }

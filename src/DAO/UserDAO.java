@@ -82,6 +82,7 @@ public class UserDAO   implements IUserDAO{
             Session session = sessionFactory.openSession();
             session.getTransaction();
             session.save(medicalRecordEntity);
+            System.out.println(medicalRecordEntity.getWeight());
             session.beginTransaction().commit();
             session.close();
             return ok;
@@ -183,14 +184,15 @@ public class UserDAO   implements IUserDAO{
      * @param phoneNumber
      * @return
      */
-    public List<String[]> getCritical(String phoneNumber){
+    public List<MedicalRecordEntity> getCritical(String phoneNumber){
         Session session = sessionFactory.openSession();
-        String hql = "select jae.alias ,mre.name from MedicalRecordEntity as mre, JpushAliasEntity as jae where mre.phonenumber = '"+phoneNumber+"'" +
-                " and ( mre.contactsNumber1 = jae.phoneNumber or  mre.contactsNumber2 = jae.phoneNumber) ";
+//        String hql = "select jae.alias ,mre.name from MedicalRecordEntity as mre, JpushAliasEntity as jae where mre.phonenumber = '"+phoneNumber+"'" +
+//                " and ( mre.contactsNumber1 = jae.phoneNumber or  mre.contactsNumber2 = jae.phoneNumber) ";
+        String hql = "from MedicalRecordEntity where phonenumber = '"+phoneNumber+"'";
 
         Query query = session.createQuery(hql);
-        List<String[]> list = query.list();
-        String[] alias = new String[list.size()];
+        List<MedicalRecordEntity> list = query.list();
+        //String[] alias = new String[list.size()];
         return list;
     }
 
@@ -622,6 +624,20 @@ public class UserDAO   implements IUserDAO{
             }
         }
     }
+
+    public double[] userGetLocation(String phoneNumber){
+        Session session = sessionFactory.openSession();
+        String hql = "from UserEntity where phoneNumber = '"+phoneNumber+"'";
+        Query query = session.createQuery(hql);
+        List<UserEntity> users = query.list();
+        double[] locations = new double[2];
+        locations[0] = Double.parseDouble(users.get(0).getLocX());
+        locations[1] = Double.parseDouble(users.get(0).getLocY());
+        session.close();
+        return locations;
+    }
+
+
 
 
 
